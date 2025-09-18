@@ -24,7 +24,8 @@ Given the set of numbers **[3, 8, 11, 19, 25, 75]** and the **target number 462*
 - Docker
 - Bash 4.0+ (if running locally)
 - bc (basic calculator) for arithmetic operations
-- BATS (Bash Automated Testing System) for running tests
+- Python 3.6+ (for running Python tests)
+- pytest (for running Python tests)
 
 ### Using Docker (Recommended)
 
@@ -47,7 +48,8 @@ The solution will be written to `output.txt` in the current directory.
 
    ```bash
    sudo apt-get update
-   sudo apt-get install -y bc bats
+   sudo apt-get install -y bc python3 python3-pip
+   pip install pytest
    ```
 
    For other distributions, use the appropriate package manager.
@@ -65,11 +67,39 @@ The solution will be written to `output.txt` in the current directory.
 
 ## Running Tests
 
-The project includes a comprehensive test suite using BATS (Bash Automated Testing System). To run the tests:
+The project includes multiple testing approaches for comprehensive validation:
+
+### Bash Tests
+
+For testing individual functions and the complete solution:
 
 ```bash
-bats tests/test_solver.bats
+bash run-test.sh
 ```
+
+This will test:
+
+- Basic arithmetic evaluation
+- Parentheses handling
+- Invalid expressions
+- Element containment
+- Expression generation
+- Output file creation
+
+### Python Tests
+
+For validating the final output and expression correctness:
+
+```bash
+pytest tests/test_outputs.py
+```
+
+The Python tests verify:
+
+1. Output file existence
+2. Expression syntax (valid characters only)
+3. Number usage (only allowed numbers used once)
+4. Expression evaluation (equals target value 462)
 
 ## Solution Approach
 
