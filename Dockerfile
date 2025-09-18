@@ -1,5 +1,5 @@
 # Use a lightweight Alpine Linux image
-FROM alpine:3.14
+FROM alpine:3.22
 
 # Install bash and bc (for arithmetic operations)
 RUN apk add --no-cache bash bc
